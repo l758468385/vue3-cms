@@ -1,7 +1,19 @@
 const { defineConfig } = require("@vue/cli-service")
 let path = require("path")
+const url = process.env.BASE_URL
 module.exports = defineConfig({
   transpileDependencies: true,
+  devServer: {
+    proxy: {
+      "/": {
+        target: url,
+        ws: false,
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  }
+
   // configureWebpack: {
   //   resolve: {
   //     alias: {
