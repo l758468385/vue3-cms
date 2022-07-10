@@ -63,7 +63,7 @@ class RKRquest {
     )
   }
   // 本来传入 AxiosRequestConfig就够了，但是传入RKRequestConfig 就可以自定义单独的接口的拦截器操作
-  request(config: RKRequestConfig) {
+  request(config: RKRequestConfig): Promise<AxiosResponse> {
     // 处理手动传入的拦截器
     if (config?.interceptors?.requestInterceptor) {
       config = config.interceptors.requestInterceptor(config)
@@ -88,6 +88,19 @@ class RKRquest {
           return err
         })
     })
+  }
+
+  post(config: RKRequestConfig) {
+    return this.request({ ...config, method: "POST" })
+  }
+  get(config: RKRequestConfig) {
+    return this.request({ ...config, method: "GET" })
+  }
+  delete(config: RKRequestConfig) {
+    return this.request({ ...config, method: "DELETE" })
+  }
+  patch(config: RKRequestConfig) {
+    return this.request({ ...config, method: "PATCH" })
   }
 }
 
