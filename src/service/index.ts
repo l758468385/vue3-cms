@@ -1,12 +1,17 @@
 import { RKRquest } from "./request"
 import { BASE_URL, TIME_OUT } from "./request/config"
 
+import localCache from "@/utils/cache"
+
 export const request = new RKRquest({
   baseURL: BASE_URL,
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config) => {
-      console.log("这是我自己配置的求情拦截器")
+      const token = localCache.getCache("token")
+      if (token) {
+        config.headers && (config.headers.Authorization = "Bearer " + token)
+      }
       return config
     }
   },

@@ -1,12 +1,29 @@
 <template>
-  <div class="main"></div>
+  <div class="main">
+    <el-container class="main-content">
+      <el-aside>
+        <nav-menu></nav-menu>
+      </el-aside>
+      <el-container class="page">
+        <el-header class="page-header"> 123123</el-header>
+        <el-main class="page-content">
+          <div class="page-info">
+            <router-view></router-view>
+          </div>
+        </el-main>
+      </el-container>
+    </el-container>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-
+import NavMenu from "@/components/nav-menu/index"
 export default defineComponent({
-  name: "main-index"
+  name: "main-index",
+  components: {
+    NavMenu
+  }
 })
 </script>
 

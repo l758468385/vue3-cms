@@ -12,3 +12,6 @@ export const store = createStore({
     login
   }
 })
+export const setupStore = () => {
+  store.dispatch("login/loadLocalLogin")
+}

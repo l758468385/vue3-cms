@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router"
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router"
 import localCache from "@/utils/cache"
+import { createHash } from "crypto"
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -24,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 // 导航守卫

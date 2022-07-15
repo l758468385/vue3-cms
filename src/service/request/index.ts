@@ -45,6 +45,7 @@ class RKRquest {
       (res) => {
         this.loadingInstance?.close()
         console.log("全局响应拦截器，成功！！！！！", res)
+        return res.data
       },
       (error) => {
         this.loadingInstance?.close()
@@ -94,7 +95,7 @@ class RKRquest {
     return this.request({ ...config, method: "GET" })
   }
 
-  post(config: RKRequestConfig): Promise <any>{
+  post(config: RKRequestConfig): Promise<any> {
     return this.request({ ...config, method: "POST" })
   }
 }
